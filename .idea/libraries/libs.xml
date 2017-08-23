@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="libs">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/libs" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/libs/mina-core-2.0.16.jar!/" />
+      <root url="jar://$USER_HOME$/.ideaLibSources/jnativehook-2.1.0-sources.jar!/src/java" />
+      <root url="jar://$USER_HOME$/.ideaLibSources/jnativehook-2.1.0-sources.jar!/src/test" />
+      <root url="jar://$USER_HOME$/.ideaLibSources/mina-core-2.0.16-sources.jar!/" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/libs" recursive="false" />
+  </library>
+</component>
