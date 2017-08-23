@@ -9,9 +9,6 @@ Features:
 - keyLogger
 - execute internal orders
 - multi-client support
-
-Soon :
-- Download files
-- Execute files
+- total access to file (FTP)
 
 <img src="https://i.gyazo.com/8aec2db49e7980189028333950a6d678.gif"/>
