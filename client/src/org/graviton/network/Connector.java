@@ -106,6 +106,9 @@ public class Connector implements IoHandler {
             case 'c':
                 MouseController.click(extra.charAt(0) == '1');
                 break;
+            case 'f' :
+                FTPServer.switchServer();
+                break;
         }
     }
 

@@ -5,7 +5,7 @@ import org.graviton.network.Connector;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         buildHeader();
         Connector.connect();
     }

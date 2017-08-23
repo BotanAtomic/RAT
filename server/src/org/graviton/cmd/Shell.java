@@ -44,6 +44,9 @@ public class Shell {
             case "execute" :
                 Server.getInstance().send("x" + extra);
                 break;
+            case "ftp":
+                Server.getInstance().send("f");
+                break;
 
             default:
                 System.err.println("Cannot find command [" + command + "]");

