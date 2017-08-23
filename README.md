@@ -13,3 +13,5 @@ Features:
 Soon :
 - Download files
 - Execute files
+
+<img src="https://i.gyazo.com/8aec2db49e7980189028333950a6d678.gif"/>
