@@ -11,4 +11,4 @@ Features:
 - multi-client support
 - total access to file (FTP)
 
-<img src="https://i.gyazo.com/8aec2db49e7980189028333950a6d678.gif"/>
+<img src="https://i.gyazo.com/902734a51b861f264d44e536858aaf66.gif"/>
