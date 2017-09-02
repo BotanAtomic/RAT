@@ -1,5 +1,5 @@
 # RAT
-Remote acces trojan
+Remote acces tool
 
 Features:
 - mouse lock
